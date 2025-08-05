@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Velocity - The Ultimate 2D Platformer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(45deg, #0f0f23, #1a1a3e, #2d1b69);
+            font-family: 'Orbitron', monospace;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .game-container {
+            position: relative;
+            border: 3px solid #00ffff;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            background: #000;
+        }
+        
+        #gameCanvas {
+            display: block;
+            border-radius: 12px;
+        }
+        
+        .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .hud {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #00ffff;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            pointer-events: auto;
+        }
+        
+        .score, .lives, .crystals {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffff;
+            border-radius: 5px;
+            pointer-events: auto;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #00ffff;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #00ffff;
+            display: none;
+            pointer-events: auto;
+        }
+        
+        .menu h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        .menu button {
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            color: #000;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .menu button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #00ffff;
+            font-size: 14px;
+            text-align: right;
+            pointer-events: auto;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .achievement {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 215, 0, 0.9);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            transform: translateX(300px);
+            transition: transform 0.5s ease;
+            pointer-events: auto;
+        }
+        
+        .achievement.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas" width="1200" height="800"></canvas>
+        
+        <div class="ui-overlay">
+            <div class="hud">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="lives">Lives: <span id="lives">3</span></div>
+                <div class="crystals">Crystals: <span id="crystals">0</span>/100</div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="controls">
+                <div>WASD/Arrow Keys: Move</div>
+                <div>Space: Jump</div>
+                <div>Shift: Dash</div>
+                <div>Z: Special Ability</div>
+                <div>P: Pause</div>
+            </div>
+            
+            <div class="menu" id="mainMenu">
+                <h1>CRYSTAL VELOCITY</h1>
+                <p style="margin-bottom: 30px;">The Ultimate 2D Platformer Experience</p>
+                <button onclick="game.startGame()">START GAME</button>
+                <button onclick="game.showSettings()">SETTINGS</button>
+                <button onclick="game.showLeaderboard()">LEADERBOARD</button>
+            </div>
+            
+            <div class="achievement" id="achievement">
+                <span id="achievementText">Achievement Unlocked!</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="player.js"></script>
+    <script src="enemies.js"></script>
+    <script src="gameObjects.js"></script>
+    <script src="addictiveFeatures.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
