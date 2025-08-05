@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Runner - The Ultimate 2D Platformer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="ui">
+            <div id="hud">
+                <div id="score">Score: <span id="scoreValue">0</span></div>
+                <div id="lives">Lives: <span id="livesValue">3</span></div>
+                <div id="energy">Energy: <span id="energyBar"></span></div>
+                <div id="combo">Combo: <span id="comboValue">0</span></div>
+            </div>
+            <div id="powerIndicator">
+                <div id="quantumPower">Quantum Power: <span id="powerLevel">0</span>%</div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="1280" height="720"></canvas>
+        
+        <div id="menu" class="screen active">
+            <div class="menu-content">
+                <h1 class="game-title">QUANTUM RUNNER</h1>
+                <p class="tagline">Defy Physics. Bend Time. Become Legend.</p>
+                <div class="menu-buttons">
+                    <button id="startBtn" class="menu-btn primary">START ADVENTURE</button>
+                    <button id="challengeBtn" class="menu-btn">DAILY CHALLENGE</button>
+                    <button id="speedrunBtn" class="menu-btn">SPEEDRUN MODE</button>
+                    <button id="upgradesBtn" class="menu-btn">UPGRADES</button>
+                    <button id="controlsBtn" class="menu-btn">CONTROLS</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="gameOverScreen" class="screen">
+            <div class="screen-content">
+                <h2>QUANTUM COLLAPSE</h2>
+                <p id="finalScore">Final Score: 0</p>
+                <p id="bestCombo">Best Combo: 0</p>
+                <div class="menu-buttons">
+                    <button id="restartBtn" class="menu-btn primary">TRY AGAIN</button>
+                    <button id="upgradeBtn" class="menu-btn">UPGRADE POWERS</button>
+                    <button id="menuBtn" class="menu-btn">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="pauseScreen" class="screen">
+            <div class="screen-content">
+                <h2>QUANTUM PAUSE</h2>
+                <div class="menu-buttons">
+                    <button id="resumeBtn" class="menu-btn primary">RESUME</button>
+                    <button id="pauseMenuBtn" class="menu-btn">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="controlsScreen" class="screen">
+            <div class="screen-content">
+                <h2>QUANTUM CONTROLS</h2>
+                <div class="controls-grid">
+                    <div class="control-item">
+                        <span class="key">ARROW KEYS / WASD</span>
+                        <span class="action">Move & Jump</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">SHIFT</span>
+                        <span class="action">Quantum Dash</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">SPACE</span>
+                        <span class="action">Time Slow</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">E</span>
+                        <span class="action">Phase Shift</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">ESC</span>
+                        <span class="action">Pause</span>
+                    </div>
+                </div>
+                <button id="controlsBackBtn" class="menu-btn">BACK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/powerups.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
